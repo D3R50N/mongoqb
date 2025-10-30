@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "declaration": true,
+        "moduleResolution": "nodenext",
+        "module": "nodenext",
+        "emitDeclarationOnly": true,
+        "allowJs": true,
+        "checkJs": true,
+        "strict": true,
+        "outDir": "./types",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
