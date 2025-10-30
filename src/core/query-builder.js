@@ -1,6 +1,6 @@
 //@ts-nocheck
-const mongoose = require('mongoose');
-module.exports= class QueryBuilder {
+const mongoose = require("mongoose");
+module.exports = class QueryBuilder {
   /** @type {number?} */
   #limit = null;
 
@@ -145,6 +145,16 @@ module.exports= class QueryBuilder {
     );
   }
 
+  /** Schema of the current model */
+  get schema() {
+    return !this.model
+      ? null
+      : Object.values(this.model.schema.paths).reduce(
+          (p, c) => ({ ...p, [c.path]: c.instance }),
+          {}
+        );
+  }
+
   /** Built pipeline as json string */
   toString() {
     return JSON.stringify(
@@ -174,7 +184,8 @@ module.exports= class QueryBuilder {
     return {
       query: this.query,
       collection: this.collectionName,
-     
+      model: this.model?.modelName,
+      schema: this.schema,
       sort: this.#sort,
       skip: this.#skip,
       limit: this.#limit,
@@ -236,7 +247,7 @@ module.exports= class QueryBuilder {
                 return `${k} NOT LIKE ${parseValue(v.$not)}`;
 
               if ("$exists" in v)
-                return `${v.$exists?"":"NOT "}EXISTS ${k}`
+                return `${v.$exists ? "" : "NOT "}EXISTS ${k}`;
 
               console.log(v);
             }
@@ -1126,4 +1137,4 @@ module.exports= class QueryBuilder {
   async findOne() {
     return this.getOne();
   }
-}
+};

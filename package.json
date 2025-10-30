@@ -6,15 +6,25 @@
     "url": "https://github.com/D3R50N/mongoqb.git"
   },
   "scripts": {},
-  "keywords": ["mongo","mongoose","db","query","query-builder","qb","builder","database","mongodb"],
+  "keywords": [
+    "mongo",
+    "mongoose",
+    "db",
+    "query",
+    "query-builder",
+    "qb",
+    "builder",
+    "database",
+    "mongodb"
+  ],
   "author": "D3R50N",
   "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "mongoose": "^8.19.2"
-  },
+  "description": "MongoDB Query Builder",
   "types": "types/index.d.ts",
   "devDependencies": {
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "mongoose": "^8.19.2"
   }
 }

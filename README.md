@@ -290,6 +290,7 @@ const q = query("users");
 q.model; // Mongoose model
 q.collection; // MongoDB collection
 q.collectionName; // Collection name
+q.schema; // Model schema
 q.query; // MongoDB query object
 q.pipeline; // Aggregation pipeline
 ```

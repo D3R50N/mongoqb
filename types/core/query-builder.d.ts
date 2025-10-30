@@ -51,6 +51,8 @@ declare class QueryBuilder {
      * @type {String|"unknown"}
      */
     get collectionName(): string;
+    /** Schema of the current model */
+    get schema(): {} | null;
     /** Built pipeline as json string */
     toString(): string;
     /** Built query as json string */
@@ -60,6 +62,9 @@ declare class QueryBuilder {
         query: {
             [x: string]: any;
         };
+        collection: string;
+        model: string;
+        schema: {} | null;
         sort: {
             [x: string]: 1 | -1;
         };
