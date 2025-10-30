@@ -1,5 +1,12 @@
-import QueryBuilder from "./core/query-builder.js";
+const QueryBuilder = require('./core/query-builder');
+/**
+ * 
+ * @param {string | import("mongoose").Model<any, any, any, any, any, any>} modelOrName 
+ * @returns A new instance of QueryBuilder
+ */
+ const query = (modelOrName) => new QueryBuilder(modelOrName);
 
-export const query = (/** @type {string | import("mongoose").Model<any, any, any, any, any, any>} */ modelOrName) => new QueryBuilder(modelOrName);
-
-export { QueryBuilder };
+module.exports = {
+    query, 
+    QueryBuilder
+}

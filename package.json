@@ -1,40 +1,19 @@
 {
-  "name": "mongo-qb",
-  "version": "1.1.0",
-  "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
+  "name": "mongqb",
+  "version": "0.0.1",
+  "main": "src/index.js",
   "repository": {
     "url": "https://github.com/D3R50N/mongoqb.git"
   },
-  "exports": {
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js"
-  },
-  "types": "./dist/types/index.d.ts",
-  "scripts": {
-    "build:cjs": "tsc --project tsconfig.cjs.json",
-    "build:esm": "cp -r src dist/esm",
-    "build:types": "tsc --project tsconfig.json",
-    "build": "npm run build:cjs && npm run build:esm && npm run build:types"
-  },
-  "keywords": [
-    "mongo",
-    "mongoose",
-    "db",
-    "query",
-    "query-builder",
-    "qb",
-    "builder",
-    "database",
-    "mongodb"
-  ],
+  "scripts": {},
+  "keywords": ["mongo","mongoose","db","query","query-builder","qb","builder","database","mongodb"],
   "author": "D3R50N",
-  "license": "MIT",
+  "license": "ISC",
   "description": "",
   "dependencies": {
     "mongoose": "^8.19.2"
   },
+  "types": "types/index.d.ts",
   "devDependencies": {
     "typescript": "^5.9.3"
   }

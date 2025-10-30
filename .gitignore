@@ -96,6 +96,9 @@ dist
 .temp
 .cache
 
+*.test.js
+
+
 # Sveltekit cache directory
 .svelte-kit/
 

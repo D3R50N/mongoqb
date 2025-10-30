@@ -1,7 +1,6 @@
-// @ts-nocheck
-import mongoose from "mongoose";
-
-export default class QueryBuilder {
+//@ts-nocheck
+const mongoose = require('mongoose');
+module.exports= class QueryBuilder {
   /** @type {number?} */
   #limit = null;
 
