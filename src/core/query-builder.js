@@ -173,6 +173,8 @@ module.exports= class QueryBuilder {
   toJson() {
     return {
       query: this.query,
+      collection: this.collectionName,
+     
       sort: this.#sort,
       skip: this.#skip,
       limit: this.#limit,
@@ -232,6 +234,11 @@ module.exports= class QueryBuilder {
               if ("$regex" in v) return `${k} LIKE ${parseValue(v.$regex)}`;
               if ("$not" in v && v.$not instanceof RegExp)
                 return `${k} NOT LIKE ${parseValue(v.$not)}`;
+
+              if ("$exists" in v)
+                return `${v.$exists?"":"NOT "}EXISTS ${k}`
+
+              console.log(v);
             }
             if (v instanceof RegExp) return `${k} LIKE ${parseValue(v)}`;
             return `${k} = ${parseValue(v)}`;
