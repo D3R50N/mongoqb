@@ -296,6 +296,19 @@ q.pipeline; // Aggregation pipeline
 
 ## Advanced Examples
 
+### Conditions Based Query Building
+
+```javascript
+const isProduction = process.env.NODE_ENV === "production";
+const adultOnly = await getUserPreference("adultOnly"); ;
+const q = query("users");
+
+if (isProduction) q.whereNot({ type: "dev" });
+if (adultOnly) q.whereGreaterEq({ age: 18 });
+
+const users = await q.get(); // query depends on conditions
+```
+
 ### Complex Search with Pagination
 
 ```javascript
