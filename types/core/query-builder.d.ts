@@ -35,7 +35,7 @@ declare class QueryBuilder {
      * @type {mongoose.Model}*/
     model: mongoose.Model<any, any, any, any, any, any>;
     /**
-     *  Collection attached to the buider
+     *  Collection attached to the builder
      *  @type {mongoose.Collection}
      *   */
     collection: mongoose.Collection;
@@ -47,7 +47,7 @@ declare class QueryBuilder {
     get pipeline(): [{
         [x: string]: any;
     }];
-    /**  Name of the collection attached to the buider
+    /**  Name of the collection attached to the builder
      * @type {String|"unknown"}
      */
     get collectionName(): string;

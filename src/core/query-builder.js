@@ -23,7 +23,7 @@ module.exports = class QueryBuilder {
   model;
 
   /**
-   *  Collection attached to the buider
+   *  Collection attached to the builder
    *  @type {mongoose.Collection}
    *   */
   collection;
@@ -134,7 +134,7 @@ module.exports = class QueryBuilder {
     return pipeline;
   }
 
-  /**  Name of the collection attached to the buider
+  /**  Name of the collection attached to the builder
    * @type {String|"unknown"}
    */
   get collectionName() {
