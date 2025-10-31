@@ -1,4 +1,4 @@
-# mongqb
+# mongo-qb
 
 An elegant and intuitive query builder for MongoDB with Mongoose, just like modern ORMs.
 
@@ -7,15 +7,15 @@ An elegant and intuitive query builder for MongoDB with Mongoose, just like mode
 ## Installation
 
 ```bash
-npm install mongqb
+npm install mongo-qb
 ```
 
 ## Basic Usage
 
 ```javascript
-import { query } from "mongqb";
+import { query } from "mongo-qb";
 // or
-import { QueryBuilder } from "mongqb";
+import { QueryBuilder } from "mongo-qb";
 
 // With model name
 const users = query("users").where({ age: 18 }).get();
@@ -445,6 +445,6 @@ MIT
 
 ---
 
-**mongqb** - Simplicity and power for your MongoDB queries
+**mongo-qb** - Simplicity and power for your MongoDB queries
 
 By happydev
