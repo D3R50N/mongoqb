@@ -1,28 +1,3 @@
-/// <reference types="mongoose/types/aggregate" />
-/// <reference types="mongoose/types/callback" />
-/// <reference types="mongoose/types/collection" />
-/// <reference types="mongoose/types/connection" />
-/// <reference types="mongoose/types/cursor" />
-/// <reference types="mongoose/types/document" />
-/// <reference types="mongoose/types/error" />
-/// <reference types="mongoose/types/expressions" />
-/// <reference types="mongoose/types/helpers" />
-/// <reference types="mongoose/types/middlewares" />
-/// <reference types="mongoose/types/indexes" />
-/// <reference types="mongoose/types/models" />
-/// <reference types="mongoose/types/mongooseoptions" />
-/// <reference types="mongoose/types/pipelinestage" />
-/// <reference types="mongoose/types/populate" />
-/// <reference types="mongoose/types/query" />
-/// <reference types="mongoose/types/schemaoptions" />
-/// <reference types="mongoose/types/session" />
-/// <reference types="mongoose/types/types" />
-/// <reference types="mongoose/types/utility" />
-/// <reference types="mongoose/types/validation" />
-/// <reference types="mongoose/types/virtuals" />
-/// <reference types="mongoose/types/schematypes" />
-/// <reference types="mongoose/types/inferschematype" />
-/// <reference types="mongoose/types/inferrawdoctype" />
 export = QueryBuilder;
 declare class QueryBuilder {
     /**
@@ -50,7 +25,7 @@ declare class QueryBuilder {
     /**  Name of the collection attached to the builder
      * @type {String|"unknown"}
      */
-    get collectionName(): string;
+    get collectionName(): string | "unknown";
     /** Schema of the current model */
     get schema(): {} | null;
     /** Built pipeline as json string */
@@ -221,7 +196,7 @@ declare class QueryBuilder {
      * @param {number} [page=1]
      * @param {number} [perPage=10]
      */
-    paginate(page?: number | undefined, perPage?: number | undefined): this;
+    paginate(page?: number, perPage?: number): this;
     /**
      * Select fields on results
      * @param {...String} fields
@@ -241,11 +216,11 @@ declare class QueryBuilder {
      * Clone the current builder. If `queryOnly` is true, it will ignore all aggregations
      * @param {boolean} [queryOnly=false]
      */
-    clone(queryOnly?: boolean | undefined): import("./query-builder");
+    clone(queryOnly?: boolean): import("./query-builder");
     /** Group aggregations on a stage
      * @param {string?} [stageName=null]
      */
-    group(stageName?: string | null | undefined): this;
+    group(stageName?: string | null): this;
     /**
      * @param {String} field - Field to sum
      * @param {String} alias - Name of the output (default sumField)
@@ -276,7 +251,7 @@ declare class QueryBuilder {
     /** Delete all docs matching the query
      * @param {boolean} [safe=true] - It prevents from accidentally delete all docs (when query is empty)
      */
-    delete(safe?: boolean | undefined): Promise<mongoose.mongo.DeleteResult>;
+    delete(safe?: boolean): Promise<mongoose.mongo.DeleteResult>;
     /** Delete first doc matching */
     deleteOne(): Promise<mongoose.mongo.DeleteResult>;
     /**
@@ -288,7 +263,7 @@ declare class QueryBuilder {
      * .where({age:18})
      * .updateRaw({$set:{type:"adult"}})
      */
-    updateRaw(data: Object, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    updateRaw(data: Object, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Default update ($set) - Replace or add new fields
      * @param {Object} data - Update data
@@ -298,7 +273,7 @@ declare class QueryBuilder {
      * .where({age:18})
      * .update({type:"adult"})
      */
-    update(data: Object, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    update(data: Object, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Rename update ($rename) - Rename field
      * @param {String} oldField
@@ -308,7 +283,7 @@ declare class QueryBuilder {
      * query("users")
      * .updateRename("age","years",true)
      */
-    updateRename(oldField: string, newField: string, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    updateRename(oldField: string, newField: string, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Multiply update ($mul) - Multiply field by value
      * @param {Object} data - Update data
@@ -317,7 +292,7 @@ declare class QueryBuilder {
      * query("users")
      * .updateMul({score:2, age:4}) //score = score*2 and age = age*4
      */
-    updateMul(data: Object, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    updateMul(data: Object, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Increment update ($inc) - Increment fields by number
      * @param {Object} data - Update data
@@ -327,7 +302,7 @@ declare class QueryBuilder {
      * .where({age:18})
      * .updateInc({score:1}) // score = score+1
      */
-    updateInc(data: Object, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    updateInc(data: Object, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Push update ($push) - Add element to array fields
      * @param {Object} data - Update data
@@ -337,7 +312,7 @@ declare class QueryBuilder {
      * .where({age:18})
      * .updatePush({bagdes:"major"})
      */
-    updatePush(data: Object, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    updatePush(data: Object, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Add update ($addToSet) - Add element to array fields without duplicate
      * @param {Object} data - Update data
@@ -347,7 +322,7 @@ declare class QueryBuilder {
      * .where({age:18})
      * .updateAdd({bagdes:"major"}) //no duplicate
      */
-    updateAdd(data: Object, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    updateAdd(data: Object, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Pull update ($pull) - Remove element from an array field
      * @param {Object} data - Update data
@@ -357,7 +332,7 @@ declare class QueryBuilder {
      * .whereLess({age:18})
      * .updatePull({bagdes:"major"})
      */
-    updatePull(data: Object, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    updatePull(data: Object, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Unset update ($unset) - Remove some fields
      * @param {[String]|Object} fields - Fields to remove
@@ -367,7 +342,7 @@ declare class QueryBuilder {
      * .whereLike({name:/^admin/i})
      * .updateUnset("restrictions")
      */
-    updateUnset(fields: [string] | Object, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    updateUnset(fields: [string] | Object, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Remove element at `index` from array `field`
      * @param {String} field - Target field
@@ -377,7 +352,7 @@ declare class QueryBuilder {
      * query("products")
      * .updateRemoveAt("prices",0,true) // all docs
      */
-    updateRemoveAt(field: string, index: number, all?: boolean | undefined): Promise<{
+    updateRemoveAt(field: string, index: number, all?: boolean): Promise<{
         matchedCount: number;
         modifiedCount: number;
         failedCount: number;
@@ -391,7 +366,7 @@ declare class QueryBuilder {
      * query("products")
      * .updatePop("prices") // last element
      */
-    updatePop(field: string, direction?: 1 | -1, all?: boolean | undefined): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
+    updatePop(field: string, direction?: 1 | -1, all?: boolean): Promise<mongoose.mongo.UpdateResult<mongoose.mongo.BSON.Document>>;
     /**
      * Take some values after result
      * @param {Number} n - Number to take
